@@ -1,0 +1,93 @@
+basePath: /v1/users
+definitions:
+  pojo.User:
+    properties:
+      UserEmail:
+        type: string
+      UserId:
+        description: 定義json的name是什麼
+        type: integer
+      UserName:
+        type: string
+      UserPassword:
+        type: string
+    type: object
+host: localhost:8000
+info:
+  contact: {}
+  description: This is a sample server celler server.FAFA
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Swagger Example API FAFAFA
+  version: "1.0"
+paths:
+  /:
+    get:
+      produces:
+      - application/json
+      responses: {}
+      summary: FindALLUsers
+      tags:
+      - Users
+    post:
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/pojo.User'
+      produces:
+      - application/json
+      responses: {}
+      summary: ADDuser
+      tags:
+      - Users
+  /{id}:
+    delete:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete
+      tags:
+      - Users
+    get:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: FindByUserId
+      tags:
+      - Users
+    put:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/pojo.User'
+      produces:
+      - application/json
+      responses: {}
+      summary: UPDATE
+      tags:
+      - Users
+swagger: "2.0"

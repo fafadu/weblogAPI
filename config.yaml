@@ -1,9 +1,0 @@
----
-mysql:
-  host: "34.125.255.114"
-  port: 3306
-  user: "fa"
-  password: "Dv1012022!"
-  db_name: "weblog"
-web:
-  port: 8000

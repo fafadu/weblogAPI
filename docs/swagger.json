@@ -1,27 +1,24 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "This is a sample server celler server.FAFA",
-        "title": "Swagger Example API FAFAFA",
+        "description": "可查詢weblog的資訊",
+        "title": "weblog API",
         "contact": {},
         "license": {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+            "name": "Apache 2.0"
         },
         "version": "1.0"
     },
-    "host": "localhost:8000",
-    "basePath": "/v1/users",
     "paths": {
-        "/": {
+        "/log/logs": {
             "get": {
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
-                    "Users"
+                    "Get weblog.查詢"
                 ],
-                "summary": "FindALLUsers",
+                "summary": "查詢所有weblog資訊",
                 "responses": {}
             },
             "post": {
@@ -29,9 +26,9 @@
                     "application/json"
                 ],
                 "tags": [
-                    "Users"
+                    "新增"
                 ],
-                "summary": "ADDuser",
+                "summary": "ADD新增",
                 "parameters": [
                     {
                         "description": "data",
@@ -39,69 +36,22 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/pojo.User"
+                            "$ref": "#/definitions/pojo.Log"
                         }
                     }
                 ],
                 "responses": {}
             }
         },
-        "/{id}": {
+        "/log/logs/{id}": {
             "get": {
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
-                    "Users"
+                    "Get weblog.查詢"
                 ],
-                "summary": "FindByUserId",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "id",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {}
-            },
-            "put": {
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Users"
-                ],
-                "summary": "UPDATE",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "id",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    },
-                    {
-                        "description": "data",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/pojo.User"
-                        }
-                    }
-                ],
-                "responses": {}
-            },
-            "delete": {
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Users"
-                ],
-                "summary": "Delete",
+                "summary": "以Id搜尋welog資訊",
                 "parameters": [
                     {
                         "type": "integer",
@@ -116,20 +66,20 @@
         }
     },
     "definitions": {
-        "pojo.User": {
+        "pojo.Log": {
             "type": "object",
             "properties": {
-                "UserEmail": {
-                    "type": "string"
-                },
-                "UserId": {
+                "logId": {
                     "description": "定義json的name是什麼",
                     "type": "integer"
                 },
-                "UserName": {
+                "logip": {
                     "type": "string"
                 },
-                "UserPassword": {
+                "logstatus": {
+                    "type": "string"
+                },
+                "logurl": {
                     "type": "string"
                 }
             }

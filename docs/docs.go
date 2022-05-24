@@ -12,23 +12,22 @@ const docTemplate = `{
         "title": "{{.Title}}",
         "contact": {},
         "license": {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+            "name": "Apache 2.0"
         },
         "version": "{{.Version}}"
     },
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/": {
+        "/log/logs": {
             "get": {
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
-                    "Users"
+                    "Get weblog.查詢"
                 ],
-                "summary": "FindALLUsers",
+                "summary": "查詢所有weblog資訊",
                 "responses": {}
             },
             "post": {
@@ -36,9 +35,9 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Users"
+                    "新增"
                 ],
-                "summary": "ADDuser",
+                "summary": "ADD新增",
                 "parameters": [
                     {
                         "description": "data",
@@ -46,69 +45,22 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/pojo.User"
+                            "$ref": "#/definitions/pojo.Log"
                         }
                     }
                 ],
                 "responses": {}
             }
         },
-        "/{id}": {
+        "/log/logs/{id}": {
             "get": {
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
-                    "Users"
+                    "Get weblog.查詢"
                 ],
-                "summary": "FindByUserId",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "id",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {}
-            },
-            "put": {
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Users"
-                ],
-                "summary": "UPDATE",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "id",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    },
-                    {
-                        "description": "data",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/pojo.User"
-                        }
-                    }
-                ],
-                "responses": {}
-            },
-            "delete": {
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Users"
-                ],
-                "summary": "Delete",
+                "summary": "以Id搜尋welog資訊",
                 "parameters": [
                     {
                         "type": "integer",
@@ -123,20 +75,20 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "pojo.User": {
+        "pojo.Log": {
             "type": "object",
             "properties": {
-                "UserEmail": {
-                    "type": "string"
-                },
-                "UserId": {
+                "logId": {
                     "description": "定義json的name是什麼",
                     "type": "integer"
                 },
-                "UserName": {
+                "logip": {
                     "type": "string"
                 },
-                "UserPassword": {
+                "logstatus": {
+                    "type": "string"
+                },
+                "logurl": {
                     "type": "string"
                 }
             }
@@ -147,11 +99,11 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "localhost:8000",
-	BasePath:         "/v1/users",
+	Host:             "",
+	BasePath:         "",
 	Schemes:          []string{},
-	Title:            "Swagger Example API FAFAFA",
-	Description:      "This is a sample server celler server.FAFA",
+	Title:            "weblog API",
+	Description:      "可查詢weblog的資訊",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 }

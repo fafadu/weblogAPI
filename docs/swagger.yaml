@@ -1,35 +1,32 @@
-basePath: /v1/users
 definitions:
-  pojo.User:
+  pojo.Log:
     properties:
-      UserEmail:
-        type: string
-      UserId:
+      logId:
         description: 定義json的name是什麼
         type: integer
-      UserName:
+      logip:
         type: string
-      UserPassword:
+      logstatus:
+        type: string
+      logurl:
         type: string
     type: object
-host: localhost:8000
 info:
   contact: {}
-  description: This is a sample server celler server.FAFA
+  description: 可查詢weblog的資訊
   license:
     name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Swagger Example API FAFAFA
+  title: weblog API
   version: "1.0"
 paths:
-  /:
+  /log/logs:
     get:
       produces:
       - application/json
       responses: {}
-      summary: FindALLUsers
+      summary: 查詢所有weblog資訊
       tags:
-      - Users
+      - Get weblog.查詢
     post:
       parameters:
       - description: data
@@ -37,27 +34,14 @@ paths:
         name: data
         required: true
         schema:
-          $ref: '#/definitions/pojo.User'
+          $ref: '#/definitions/pojo.Log'
       produces:
       - application/json
       responses: {}
-      summary: ADDuser
+      summary: ADD新增
       tags:
-      - Users
-  /{id}:
-    delete:
-      parameters:
-      - description: id
-        in: path
-        name: id
-        required: true
-        type: integer
-      produces:
-      - application/json
-      responses: {}
-      summary: Delete
-      tags:
-      - Users
+      - 新增
+  /log/logs/{id}:
     get:
       parameters:
       - description: id
@@ -68,26 +52,7 @@ paths:
       produces:
       - application/json
       responses: {}
-      summary: FindByUserId
+      summary: 以Id搜尋welog資訊
       tags:
-      - Users
-    put:
-      parameters:
-      - description: id
-        in: path
-        name: id
-        required: true
-        type: integer
-      - description: data
-        in: body
-        name: data
-        required: true
-        schema:
-          $ref: '#/definitions/pojo.User'
-      produces:
-      - application/json
-      responses: {}
-      summary: UPDATE
-      tags:
-      - Users
+      - Get weblog.查詢
 swagger: "2.0"

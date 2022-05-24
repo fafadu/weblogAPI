@@ -1,0 +1,9 @@
+---
+mysql:
+  host: "127.0.0.0"
+  port: 3306
+  user: "username"
+  password: "test1234"
+  db_name: "demo"
+web:
+  port: 8000

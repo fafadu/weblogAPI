@@ -14,7 +14,6 @@ var DBconnect *gorm.DB //附上值
 var err error
 
 func DD() {
-
 	dsn := fmt.Sprintf(
 		"%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
 		viper.GetString("mysql.user"),
@@ -27,5 +26,4 @@ func DD() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 }
